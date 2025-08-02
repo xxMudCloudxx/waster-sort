@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>垃圾分类科普网站 - 让分类成为习惯</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <i class="fas fa-recycle"></i>
+          <span>垃圾分类科普</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home">首页</a></li>
+          <li><a href="#guide">分类指南</a></li>
+          <li><a href="#journey">资源再生</a></li>
+          <li><a href="#laws">法规政策</a></li>
+          <li><a href="#interactive">趣味互动</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>让垃圾分类成为习惯</h1>
+        <p>科学分类，绿色生活，共建美好家园</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="scrollToSection('guide')">
+            开始学习
+          </button>
+          <button class="btn-secondary" onclick="openSearchModal()">
+            智能搜索
+          </button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">75%</div>
+          <div class="stat-label">回收利用率</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4</div>
+          <div class="stat-label">分类标准</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2000+</div>
+          <div class="stat-label">物品条目</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 为什么要分类 -->
+    <section class="why-classify">
+      <div class="container">
+        <h2>为什么要垃圾分类？</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <i class="fas fa-leaf"></i>
+            <h3>保护环境</h3>
+            <p>减少污染，保护土壤和水源</p>
+          </div>
+          <div class="benefit-card">
+            <i class="fas fa-recycle"></i>
+            <h3>资源回收</h3>
+            <p>变废为宝，循环利用资源</p>
+          </div>
+          <div class="benefit-card">
+            <i class="fas fa-coins"></i>
+            <h3>节约成本</h3>
+            <p>降低处理成本，创造经济价值</p>
+          </div>
+          <div class="benefit-card">
+            <i class="fas fa-heart"></i>
+            <h3>健康生活</h3>
+            <p>改善生活环境，提升生活质量</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分类指南 -->
+    <section id="guide" class="classification-guide">
+      <div class="container">
+        <h2>垃圾分类指南</h2>
+
+        <!-- 智能搜索 -->
+        <div class="search-section">
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="输入物品名称，如：塑料瓶、废电池..."
+            />
+            <button onclick="searchItem()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div class="search-options">
+            <button onclick="startVoiceSearch()">
+              <i class="fas fa-microphone"></i> 语音搜索
+            </button>
+            <button onclick="startPhotoSearch()">
+              <i class="fas fa-camera"></i> 拍照识别
+            </button>
+          </div>
+
+          <!-- 搜索结果显示区域 -->
+          <div
+            id="inlineSearchResults"
+            class="inline-search-results"
+            style="display: none"
+          ></div>
+        </div>
+
+        <!-- 四分类标准 -->
+        <div class="classification-types">
+          <div class="type-card recyclable">
+            <div class="type-icon">
+              <i class="fas fa-recycle"></i>
+            </div>
+            <h3>可回收物</h3>
+            <div class="type-color blue"></div>
+            <p>纸类、塑料、金属、玻璃、织物等</p>
+            <ul>
+              <li>废纸：报纸、杂志、纸箱</li>
+              <li>塑料：饮料瓶、洗发水瓶</li>
+              <li>金属：易拉罐、铁盒</li>
+              <li>玻璃：酒瓶、玻璃杯</li>
+            </ul>
+          </div>
+
+          <div class="type-card harmful">
+            <div class="type-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>有害垃圾</h3>
+            <div class="type-color red"></div>
+            <p>对人体健康或环境有害的废弃物</p>
+            <ul>
+              <li>电池：纽扣电池、充电电池</li>
+              <li>灯管：节能灯、荧光灯管</li>
+              <li>药品：过期药品、药品包装</li>
+              <li>化学品：杀虫剂、油漆桶</li>
+            </ul>
+          </div>
+
+          <div class="type-card kitchen">
+            <div class="type-icon">
+              <i class="fas fa-apple-alt"></i>
+            </div>
+            <h3>厨余垃圾</h3>
+            <div class="type-color green"></div>
+            <p>易腐烂的生物质废弃物</p>
+            <ul>
+              <li>食材废料：菜叶、果皮、蛋壳</li>
+              <li>剩菜剩饭：米饭、面条、汤水</li>
+              <li>过期食品：面包、牛奶、罐头</li>
+              <li>茶叶渣：茶叶、咖啡渣</li>
+            </ul>
+          </div>
+
+          <div class="type-card other">
+            <div class="type-icon">
+              <i class="fas fa-trash"></i>
+            </div>
+            <h3>其他垃圾</h3>
+            <div class="type-color gray"></div>
+            <p>除上述三类外的其他生活废弃物</p>
+            <ul>
+              <li>污染纸张：餐巾纸、卫生纸</li>
+              <li>烟蒂：香烟头、烟灰</li>
+              <li>陶瓷：破碎陶瓷、马桶</li>
+              <li>灰土：猫砂、煤渣</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 场景专用指南 -->
+        <div class="scenario-guides">
+          <h3>场景专用指南</h3>
+          <div class="scenario-tabs">
+            <button
+              class="tab-btn active"
+              onclick="showScenario('campus'); this.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+            >
+              校园
+            </button>
+            <button
+              class="tab-btn"
+              onclick="showScenario('office'); this.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+            >
+              办公室
+            </button>
+            <button
+              class="tab-btn"
+              onclick="showScenario('takeout'); this.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+            >
+              外卖
+            </button>
+            <button
+              class="tab-btn"
+              onclick="showScenario('home'); this.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+            >
+              家庭
+            </button>
+          </div>
+          <div id="scenario-content" class="scenario-content">
+            <!-- 内容将通过JavaScript动态加载 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 资源再生之旅 -->
+    <section id="journey" class="recycling-journey">
+      <div class="container">
+        <h2>资源再生之旅</h2>
+        <p class="section-desc">跟随我们探索垃圾的第二次生命</p>
+
+        <div class="journey-tabs">
+          <button
+            class="journey-tab active"
+            onclick="showJourney('plastic'); this.parentElement.querySelectorAll('.journey-tab').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+          >
+            塑料
+          </button>
+          <button
+            class="journey-tab"
+            onclick="showJourney('paper'); this.parentElement.querySelectorAll('.journey-tab').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+          >
+            纸张
+          </button>
+          <button
+            class="journey-tab"
+            onclick="showJourney('metal'); this.parentElement.querySelectorAll('.journey-tab').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+          >
+            金属玻璃
+          </button>
+          <button
+            class="journey-tab"
+            onclick="showJourney('ewaste'); this.parentElement.querySelectorAll('.journey-tab').forEach(b => b.classList.remove('active')); this.classList.add('active');"
+          >
+            电子废物
+          </button>
+        </div>
+
+        <div class="journey-content">
+          <div id="plastic-journey" class="journey-item active">
+            <div class="journey-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>收集分拣</h4>
+                  <p>PET瓶被收集并按颜色、材质分类</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>清洗破碎</h4>
+                  <p>去除标签，清洗后破碎成小片</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>熔融造粒</h4>
+                  <p>高温熔融制成再生塑料颗粒</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h4>重新制造</h4>
+                  <p>制成新瓶子、纤维或其他塑料制品</p>
+                </div>
+              </div>
+            </div>
+            <div class="journey-stats">
+              <div class="stat">
+                <span class="stat-value">25</span>
+                <span class="stat-unit">个塑料瓶</span>
+                <span class="stat-desc">可制成1件抓绒衣</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">80%</span>
+                <span class="stat-unit">能源节约</span>
+                <span class="stat-desc">相比原生产</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 法规与政策 -->
+    <section id="laws" class="laws-policies">
+      <div class="container">
+        <h2>法规与政策</h2>
+        <div class="timeline-container">
+          <div class="timeline">
+            <!-- 2017 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2017年</div>
+              <div class="timeline-content">
+                <h4>《生活垃圾分类制度实施方案》</h4>
+                <p>
+                  国务院办公厅转发国家发改委、住建部《生活垃圾分类制度实施方案》的通知（<strong>国办发〔2017〕26号</strong>），经2017年3月18日国务院常务会议审议通过，并于2017年3月30日发布，要求46个重点城市先行实施生活垃圾<strong>强制分类</strong>，标志着垃圾分类国家战略的正式启动。
+                </p>
+              </div>
+            </div>
+
+            <!-- 2019 | 国标 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2019年</div>
+              <div class="timeline-content">
+                <h4>新版《生活垃圾分类标志》国标实施</h4>
+                <p>
+                  国家市场监督管理总局、国家标准化管理委员会以2019年第6号公告发布<strong
+                    >GB/T 19095-2019</strong
+                  >《生活垃圾分类标志》，自2019年12月1日起实施，统一全国分类标志为“可回收物、有害垃圾、厨余垃圾、其他垃圾”四大类，为标准化执行提供了基础。
+                </p>
+              </div>
+            </div>
+
+            <!-- 2019 | 上海条例 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2019年</div>
+              <div class="timeline-content">
+                <h4>上海开启强制分类时代</h4>
+                <p>
+                  《上海市生活垃圾管理条例》由<strong>上海市第十五届人民代表大会第二次会议</strong>于2019年1月31日高票通过，并于2019年7月1日施行，其成功的实践经验在全国范围内起到了重要的引领和示范作用。
+                </p>
+              </div>
+            </div>
+
+            <!-- 2020 | 固废法 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2020年</div>
+              <div class="timeline-content">
+                <h4>新《固体废物污染环境防治法》施行</h4>
+                <p>
+                  经<strong>十三届全国人大常委会第十七次会议</strong>于2020年4月29日表决通过的新修订《中华人民共和国固体废物污染环境防治法》自2020年9月1日施行，从国家法律层面确立了生活垃圾分类制度，明确了各方责任，为全国推行强制分类提供了根本性的法律保障。
+                </p>
+              </div>
+            </div>
+
+            <!-- 2021 | “十四五”规划 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2021年</div>
+              <div class="timeline-content">
+                <h4>“十四五”规划发布</h4>
+                <p>
+                  国家发展改革委、住房城乡建设部联合印发《“十四五”城镇生活垃圾分类和处理设施发展规划》（<strong>发改环资〔2021〕642号</strong>，2021年5月6日发布），系统部署了2021至2025年的发展路径和重点任务，提出到2025年地级及以上城市基本建成生活垃圾分类处理系统。
+                </p>
+              </div>
+            </div>
+
+            <!-- 2022 | 无废城市 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2022年</div>
+              <div class="timeline-content">
+                <h4>深入推进“无废城市”建设</h4>
+                <p>
+                  生态环境部等18部门联合印发《“十四五”时期“无废城市”建设工作方案》（<strong>环固体〔2021〕114号</strong>，2021年12月10日签署，2022年起实施），将生活垃圾分类作为“无废城市”建设的重要组成部分，推动源头减量和资源化利用向纵深发展。
+                </p>
+              </div>
+            </div>
+
+            <!-- 2025 | 目标展望 -->
+            <div class="timeline-item">
+              <div class="timeline-date">2025年</div>
+              <div class="timeline-content">
+                <h4>展望2025年发展目标</h4>
+                <p>
+                  住房城乡建设部等12部门《关于进一步推进生活垃圾分类工作的若干意见》（<strong>建城〔2020〕93号</strong>，2020年11月27日发布）提出：到2025年底，全国城市生活垃圾回收利用率将达到<strong>35%</strong>以上，全国地级及以上城市基本建成生活垃圾分类投放、收集、运输、处理系统。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 趣味互动 -->
+    <section id="interactive" class="interactive-section">
+      <div class="container">
+        <h2>趣味互动</h2>
+        <div class="interactive-grid">
+          <div class="interactive-card">
+            <i class="fas fa-gamepad"></i>
+            <h3>闯关小游戏</h3>
+            <p>通过游戏学习分类知识</p>
+            <button class="btn-game" onclick="startGame()">开始游戏</button>
+          </div>
+          <div class="interactive-card">
+            <i class="fas fa-question-circle"></i>
+            <h3>知识测验</h3>
+            <p>测试你的分类水平</p>
+            <button class="btn-quiz" onclick="startQuiz()">开始测验</button>
+          </div>
+          <div class="interactive-card">
+            <i class="fas fa-trophy"></i>
+            <h3>排行榜</h3>
+            <p>查看积分排名</p>
+            <button class="btn-rank" onclick="showRanking()">查看排行</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>关于我们</h4>
+            <p>致力于垃圾分类科普教育，推动绿色生活方式</p>
+          </div>
+          <div class="footer-section">
+            <h4>快速链接</h4>
+            <ul>
+              <li><a href="#guide">分类指南</a></li>
+              <li><a href="#journey">资源再生</a></li>
+              <li><a href="#laws">法规政策</a></li>
+              <li><a href="#interactive">趣味互动</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>联系我们</h4>
+            <p>邮箱: cumt@wastesort.edu</p>
+            <p>电话: 400-123-4567</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 垃圾分类科普网站. 中国矿业大学郑凯鸿制作</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 搜索模态框 -->
+    <div id="searchModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSearchModal()">&times;</span>
+        <h3>智能垃圾分类搜索</h3>
+        <div class="modal-search">
+          <input
+            type="text"
+            id="modalSearchInput"
+            placeholder="输入物品名称..."
+          />
+          <button onclick="modalSearch()">搜索</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+    </div>
+
+    <!-- 游戏模态框 -->
+    <div id="gameModal" class="modal">
+      <div class="modal-content game-modal">
+        <span class="close" onclick="closeGameModal()">&times;</span>
+        <h3>垃圾分类闯关游戏</h3>
+        <div id="gameContent" class="game-content">
+          <div class="game-info">
+            <div class="game-score">得分: <span id="gameScore">0</span></div>
+            <div class="game-level">关卡: <span id="gameLevel">1</span></div>
+            <div class="game-combo">连击: <span id="gameCombo">0</span></div>
+          </div>
+          <div class="game-area">
+            <div id="gameItem" class="game-item"></div>
+            <div class="trash-bins">
+              <div class="trash-bin recyclable" data-type="recyclable">
+                <i class="fas fa-recycle"></i>
+                <span>可回收物</span>
+              </div>
+              <div class="trash-bin harmful" data-type="harmful">
+                <i class="fas fa-skull-crossbones"></i>
+                <span>有害垃圾</span>
+              </div>
+              <div class="trash-bin kitchen" data-type="kitchen">
+                <i class="fas fa-apple-alt"></i>
+                <span>厨余垃圾</span>
+              </div>
+              <div class="trash-bin other" data-type="other">
+                <i class="fas fa-trash"></i>
+                <span>其他垃圾</span>
+              </div>
+            </div>
+          </div>
+          <div class="game-controls">
+            <button id="startGameBtn" class="btn-primary" onclick="initGame()">
+              开始游戏
+            </button>
+            <button
+              id="pauseGameBtn"
+              class="btn-secondary"
+              onclick="pauseGame()"
+              style="display: none"
+            >
+              暂停
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 测验模态框 -->
+    <div id="quizModal" class="modal">
+      <div class="modal-content quiz-modal">
+        <span class="close" onclick="closeQuizModal()">&times;</span>
+        <h3>垃圾分类知识测验</h3>
+        <div id="quizContent" class="quiz-content">
+          <div class="quiz-progress">
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <span id="questionCounter">1/10</span>
+          </div>
+          <div id="questionArea" class="question-area">
+            <h4 id="questionText"></h4>
+            <div id="optionsArea" class="options-area"></div>
+          </div>
+          <div class="quiz-controls">
+            <button id="startQuizBtn" class="btn-primary" onclick="initQuiz()">
+              开始测验
+            </button>
+            <button
+              id="nextQuestionBtn"
+              class="btn-secondary"
+              onclick="nextQuestion()"
+              style="display: none"
+            >
+              下一题
+            </button>
+          </div>
+          <div id="quizResult" class="quiz-result" style="display: none"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 排行榜模态框 -->
+    <div id="rankingModal" class="modal">
+      <div class="modal-content ranking-modal">
+        <span class="close" onclick="closeRankingModal()">&times;</span>
+        <h3>🏆 积分排行榜</h3>
+        <div id="rankingContent" class="ranking-content">
+          <div class="user-stats">
+            <div class="stat-item">
+              <span class="stat-label">当前积分</span>
+              <span id="userCurrentScore" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">排名</span>
+              <span id="userRank" class="stat-value">-</span>
+            </div>
+          </div>
+          <div id="rankingList" class="ranking-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
